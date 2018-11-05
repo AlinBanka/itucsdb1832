@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-#kk
+#
 # Configuration file for the Sphinx documentation builder.
 #
 # This file does only contain a selection of the most common options. For a
@@ -19,9 +19,9 @@
 
 # -- Project information -----------------------------------------------------
 
-project = 'ITUCSDB18NN'
-copyright = '2018, ITUCSDB18NN'
-author = 'ITUCSDB18NN'
+project = 'ITUCSDB1832'
+copyright = '2018, ITUCSDB1832'
+author = 'ITUCSDB1832'
 
 # The short X.Y version
 version = ''
@@ -102,7 +102,7 @@ html_static_path = ['_static']
 # -- Options for HTMLHelp output ---------------------------------------------
 
 # Output file base name for HTML help builder.
-htmlhelp_basename = 'ITUCSDB18NNdoc'
+htmlhelp_basename = 'ITUCSDB1832doc'
 
 
 # -- Options for LaTeX output ------------------------------------------------
@@ -129,8 +129,8 @@ latex_elements = {
 # (source start file, target name, title,
 #  author, documentclass [howto, manual, or own class]).
 latex_documents = [
-    (master_doc, 'ITUCSDB18NN.tex', 'ITUCSDB18NN Documentation',
-     'ITUCSDB18NN', 'manual'),
+    (master_doc, 'ITUCSDB1832.tex', 'ITUCSDB1832 Documentation',
+     'ITUCSDB1832', 'manual'),
 ]
 
 
@@ -139,7 +139,7 @@ latex_documents = [
 # One entry per manual page. List of tuples
 # (source start file, name, description, authors, manual section).
 man_pages = [
-    (master_doc, 'itucsdb18nn', 'ITUCSDB18NN Documentation',
+    (master_doc, 'itucsdb1832', 'ITUCSDB1832 Documentation',
      [author], 1)
 ]
 
@@ -150,8 +150,8 @@ man_pages = [
 # (source start file, target name, title, author,
 #  dir menu entry, description, category)
 texinfo_documents = [
-    (master_doc, 'ITUCSDB18NN', 'ITUCSDB18NN Documentation',
-     author, 'ITUCSDB18NN', 'One line description of project.',
+    (master_doc, 'ITUCSDB1832', 'ITUCSDB1832 Documentation',
+     author, 'ITUCSDB1832', 'One line description of project.',
      'Miscellaneous'),
 ]
 
