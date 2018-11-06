@@ -1,5 +1,5 @@
 from flask import Flask, render_template, url_for
-from form import RegistartionForm
+from form import RegistrationForm
 import psycopg2 as db
 
 app = Flask(__name__)
