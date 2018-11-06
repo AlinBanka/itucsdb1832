@@ -1,4 +1,4 @@
-from wtforms import Form, StringField, PasswordField, SubmitField, BooleanField, validators
+from flask.ext.wtf.form import Form, StringField, PasswordField, SubmitField, BooleanField, validators
 
 
 class RegistrationForm(Form):
