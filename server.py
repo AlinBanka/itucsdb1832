@@ -33,7 +33,8 @@ def register():
         try:
             connection = db.connect("dbname='postgres' user='postgres' host='localhost' password=''")
             cursor = connection.cursor()
-            cursor.execute(statement)
+            statement = "INSERT INTO students VALUES(%s, %s, %s, %s)"
+            cursor.execute(statement, (usename, password, name, surname))
             result = cursor.fetchone()
             flash('Your account was created successfully')
         except db.DatabaseError:
