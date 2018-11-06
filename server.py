@@ -33,8 +33,6 @@ def register():
         try:
             connection = db.connect("dbname='postgres' user='postgres' host='localhost' password=''")
             cursor = connection.cursor()
-            statement = """SELECT * FROM users WHERE tckn = '%s'
-                    """ % tc
             cursor.execute(statement)
             result = cursor.fetchone()
             flash('Your account was created successfully')
