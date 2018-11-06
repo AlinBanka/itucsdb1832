@@ -11,11 +11,11 @@ statement = """CREATE TABLE IF NOT EXISTS students(
         surname VARCHAR NOT NULL
         )"""
 
-connection = db.connect("dbname='itucsdb' user='postgres' host='localhost' port=5431 password=''")
-cursor = connection.cursor()
-cursor.execute(statement)
-connection.commit()
-cursor.close()
+#connection = db.connect("dbname='itucsdb' user='postgres' host='localhost' port=5431 password=''")
+#cursor = connection.cursor()
+#cursor.execute(statement)
+#connection.commit()
+#cursor.close()
 
 
 @app.route("/")
@@ -31,11 +31,11 @@ def register():
         name = form.name.data
         surname = form.surname.data
         try:
-            connection = db.connect("dbname='postgres' user='postgres' host='localhost' password=''")
-            cursor = connection.cursor()
-            statement = "INSERT INTO students VALUES(%s, %s, %s, %s)"
-            cursor.execute(statement, (usename, password, name, surname))
-            result = cursor.fetchone()
+            #connection = db.connect("dbname='postgres' user='postgres' host='localhost' password=''")
+            #cursor = connection.cursor()
+            #statement = "INSERT INTO students VALUES(%s, %s, %s, %s)"
+            #cursor.execute(statement, (usename, password, name, surname))
+            #result = cursor.fetchone()
             flash('Your account was created successfully')
         except db.DatabaseError:
             connection.rollback()
