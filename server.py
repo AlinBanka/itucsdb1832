@@ -11,7 +11,7 @@ statement = """CREATE TABLE IF NOT EXISTS students(
         surname VARCHAR NOT NULL
         )"""
 
-connection = db.connect("dbname='postgres' user='postgres' host='localhost' password=''")
+connection = db.connect("dbname='itucsdb' user='postgres' host='localhost' post=5431 password=''")
 cursor = connection.cursor()
 cursor.execute(statement)
 connection.commit()
