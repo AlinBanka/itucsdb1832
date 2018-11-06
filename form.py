@@ -12,6 +12,7 @@ class RegistrationForm(FlaskForm):
     ])
     confirm = PasswordField('retype password')
     studentno = StringField('student number', [validators.Length(9)])
+    submit = SubmitField('CREATE')
     
  class LoginForm(FlaskForm):
     username = StringField('username', [validators.DataRequired()])
