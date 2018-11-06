@@ -1,8 +1,7 @@
-from flask_wtf import FlaskForm
-from wtforms import StringField, PasswordField, SubmitField, BooleanField, validators
+from wtforms import Form, StringField, PasswordField, SubmitField, BooleanField, validators
 
 
-class RegistrationForm(FlaskForm):
+class RegistrationForm(Form):
     username = StringField('username', [validators.Length(min=4, max=25)])
     name = StringField('name', [validators.Length(min=6, max=35)])
     surname = StringField('surname', [validators.Length(min=6, max=35)])
@@ -14,7 +13,7 @@ class RegistrationForm(FlaskForm):
     studentno = StringField('student number', [validators.Length(9)])
     submit = SubmitField('CREATE')
     
-class LoginForm(FlaskForm):
+class LoginForm(Form):
     username = StringField('username', [validators.DataRequired()])
     password = PasswordField('password', [
         validators.DataRequired()
