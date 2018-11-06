@@ -1,0 +1,38 @@
+{% extends "layout.html" %}
+{% block content %}
+    <div class="form">
+        <form method="POST" action="">
+		  {{ form.hidden_tag() }}
+		<fieldset>
+		<dir>
+			{{ form.username.label() }}
+			{{ form.username() }}
+		</dir>
+		<dir>
+			{{ form.password.label() }}
+			{{ form.password() }}
+		</dir>
+		<dir>
+			{{ form.confirm.label() }}
+			{{ form.confirm() }}
+		</dir>
+		<dir>
+			{{ form.name.label() }}
+			{{ form.name() }}
+		</dir>
+		<dir>
+			{{ form.surname.label() }}
+			{{ form.surname() }}
+		</dir>
+		<dir>
+			{{ form.studentno.label() }}
+			{{ form.studentno() }}
+		</dir>
+		<dir>
+			{{ form.submit() }}
+		</dir>
+		</fieldset>
+      		  <p class="message">Already have an account? <a href="home.html">Login</a></p>
+        </form>
+    </div>
+{% endblock content %}
