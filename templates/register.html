@@ -3,7 +3,7 @@
     <div class="form">
         <form method="POST" action="">
 		  {{ form.hidden_tag() }}
-		<fieldset>
+		<fieldset>      		  <p class="message">Already have an account? <a href="home.html"
 		<dir>
 			{{ form.username.label() }}
 			{{ form.username() }}
@@ -32,7 +32,7 @@
 			{{ form.submit() }}
 		</dir>
 		</fieldset>
-      		  <p class="message">Already have an account? <a href="home.html">Login</a></p>
+      		  <p class="message">Already have an account? <a href="{{ url_for('home_page') }}">Login</a></p>
         </form>
     </div>
 {% endblock content %}
