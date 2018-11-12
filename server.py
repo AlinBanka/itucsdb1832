@@ -33,7 +33,7 @@ def register():
         name = form.name.data
         surname = form.surname.data
         try:
-            connection = db.connect("dbname='postgres' user='postgres' host='localhost' password=''")
+            connection = db.connect(url)
             cursor = connection.cursor()
             statement = "INSERT INTO students VALUES(%s, %s, %s, %s)"
             cursor.execute(statement, (usename, password, name, surname))
