@@ -11,13 +11,12 @@ statement = """CREATE TABLE IF NOT EXISTS students(
         surname VARCHAR NOT NULL
         )"""
 
-#url = "postgres://itucs:itucspw@localhost:32775/itucsdb"
-
-#connection = db.connect(url)
-#cursor = connection.cursor()
-#cursor.execute(statement)
-#connection.commit()
-#cursor.close()
+url = "postgres://ffpzkcsbsmkffc:0bf6c8ea8127f14cb4da7d50542d9dadffa30fd97640dc6260cdac27f9762656@ec2-79-125-8-105.eu-west-1.compute.amazonaws.com:5432/d4280d6o5jiga1"
+connection = db.connect(url)
+cursor = connection.cursor()
+cursor.execute(statement)
+connection.commit()
+cursor.close()
 
 
 @app.route("/")
