@@ -1,8 +1,10 @@
-from flask import Flask, render_template, url_for
+from flask import Flask, render_template, url_for, flash
 from form import RegistrationForm
 import psycopg2 as db
 
 app = Flask(__name__)
+app.config['SECRET_KEY'] = '1234w7ecF4gh321q'
+
 statement = """CREATE TABLE IF NOT EXISTS students(
         username VARCHAR PRIMARY KEY,
         password VARCHAR NOT NULL,
@@ -23,21 +25,24 @@ cursor.close()
 def home_page():
     return render_template("home.html")
 
+
 @app.route('/register', methods=['GET', 'POST'])
 def register():
-    form = RegistrationForm(request.form)
-    if request.method == 'POST' and form.validate():
+    form = RegistrationForm()
+    if form.validate_on_submit():
         username = form.username.data
         password = form.password.data
         name = form.name.data
         surname = form.surname.data
+        studentno = form.studentno.data
         try:
             connection = db.connect(url)
             cursor = connection.cursor()
-            statement = "INSERT INTO students VALUES(%s, %s, %s, %s)"
-            cursor.execute(statement, (usename, password, name, surname))
+            statement = "INSERT INTO students VALUES (%s, %s, %s, %s, %s)"
+            cursor.execute(statement, (username, password, studentno, name, surname))
             result = cursor.fetchone()
             flash('Your account was created successfully')
+            return redirect(url_for('login'))
         except db.DatabaseError:
             connection.rollback()
             flash('Unsuccessful', 'danger')
