@@ -1,0 +1,18 @@
+{% extends "layout.html" %}
+{% block title %}Create{% endblock %}
+{% block content %}
+    <div class="form" style="margin-left:37%;padding-left:20px;padding-top:30px;padding-bottom:30px;">
+        <form style="border:white;" method="POST" action="" >
+		<fieldset style="border:0px;">      		  
+		<input name="username" type="text" placeholder="username"/>
+		<input name="password" type="password" placeholder="password"/>
+		<input name="confirm" type="password" placeholder="confirm"/>
+		<input name="name" type="text" placeholder="name"/>
+		<input name="surname" type="text" placeholder="surname"/>
+		<input name="studentno" type="text" placeholder="studentno"/>
+		<button>CREATE</button>
+		</fieldset>
+      		  <p class="message">Already have an account? <a href="{{ url_for('home_page') }}">Login</a></p>
+        </form>
+    </div>
+{% endblock %}
