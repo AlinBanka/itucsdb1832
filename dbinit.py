@@ -24,7 +24,7 @@ INIT_STATEMENTS = [
         )""",
      """CREATE TABLE IF NOT EXISTS teachers(
         code INTEGER,
-        username VARCHAR PRIMARY KEY,
+        username VARCHAR,
         password VARCHAR NOT NULL,
         name VARCHAR NOT NULL,
         surname VARCHAR NOT NULL,
@@ -32,12 +32,12 @@ INIT_STATEMENTS = [
         PRIMARY KEY(code, studentno)
         )""",
      """CREATE TABLE IF NOT EXISTS finance(
-	    paid INTEGER DEFAULT 0,
-	    topay INTEGER DEFAULT 500,
+	paid INTEGER DEFAULT 0,
+	topay INTEGER DEFAULT 500,
         studentno INTEGER REFERENCES student,
         PRIMARY KEY(studentno),
-	    CHECK((paid<=500) AND (topay>=0))
-	    )"""
+	CHECK((paid<=500) AND (topay>=0))
+	)"""
 ]
 
 
