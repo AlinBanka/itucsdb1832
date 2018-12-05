@@ -49,7 +49,6 @@ def initialize(url):
         cursor.close()
         connection = dbapi2.connect(url)
         cursor = connection.cursor()
-        statement = "INSERT INTO student VALUES (101, 'umut1', 'umutkari', 'Umut', 'kari')"
         cursor.execute(statement)
 
 
