@@ -6,8 +6,7 @@ import psycopg2 as db
 app = Flask(__name__)
 app.config['SECRET_KEY'] = '1234w7ecF4gh321q'
 
-url = "postgres://ffpzkcsbsmkffc:0bf6c8ea8127f14cb4da7d50542d9dadffa30fd97640dc6260cdac27f9762656@ec2-79-125-8-105.eu-west-1.compute.amazonaws.com:5432/d4280d6o5jiga1
-"
+url = """postgres://ffpzkcsbsmkffc:0bf6c8ea8127f14cb4da7d50542d9dadffa30fd97640dc6260cdac27f9762656@ec2-79-125-8-105.eu-west-1.compute.amazonaws.com:5432/d4280d6o5jiga1"""
 initialize(url)
 
 @app.route('/home_page', methods=['GET', 'POST'])
