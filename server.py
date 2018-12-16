@@ -1,6 +1,7 @@
 from flask import Flask, render_template, url_for, flash, request, session, redirect, Markup, g
 from form import RegistrationForm, LoginForm, Course, Database, teacher_course, teacher_db, message, messages
 from dbinit import initialize
+from passlib.hash import pbkdf2_sha256 as hasher
 import psycopg2 as db
 import os
 
@@ -32,7 +33,7 @@ def home():
 @app.route('/home_page', methods=['GET', 'POST'])
 def home_page():
     if request.method=="POST":
-        login = LoginForm(request.form["username"], request.form["password"])
+        login = LoginForm(request.form["username"], hasher.hash(request.form["password"]))
         if request.form["opt"]=="student":
             try:
                 connection = db.connect(url)
@@ -88,7 +89,7 @@ def before_request():
 @app.route('/register', methods=['GET', 'POST'])
 def register():
     if request.method=="POST":
-        myform = RegistrationForm(request.form["studentno"], request.form["username"], request.form["password"], request.form["name"], request.form["surname"])
+        myform = RegistrationForm(request.form["studentno"], request.form["username"], hasher.hash(request.form["password"]), request.form["name"], request.form["surname"])
         if request.form["opt"]=="student":
             try:
                 connection = db.connect(url)
