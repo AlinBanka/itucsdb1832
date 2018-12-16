@@ -79,3 +79,26 @@ class teacher_db:
             course_ = teacher_course(course.crn, course.name, course.no)
             courses.append((key, course))
         return courses
+    
+class message:
+    def __init__(self, crn, name, message):
+        self.crn = crn
+        self.name = name
+        self.message = message
+
+class messages:
+    def __init__(self):
+        self.messages = {}
+        self.last_key = 0
+
+    def add_message(self, message):
+        self.last_key += 1
+        self.messages[self.last_key] = message
+        return self.last_key
+
+    def get_messages(self):
+        messages = []
+        for key, mes in self.messages.items():
+            message_ = message(mes.crn, mes.name, mes.message)
+            messages.append((key, message_))
+        return messages
