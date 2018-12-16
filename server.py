@@ -9,7 +9,7 @@ app.config['SECRET_KEY'] = '1234w7ecF4gh321q'
 
 APP_ROOT = os.path.dirname(os.path.abspath('_file_'))
 
-url = "postgres://postgres@localhost:5432/postgres"
+url = "postgres://ffpzkcsbsmkffc:0bf6c8ea8127f14cb4da7d50542d9dadffa30fd97640dc6260cdac27f9762656@ec2-79-125-8-105.eu-west-1.compute.amazonaws.com:5432/d4280d6o5jiga1"
 initialize(url)
 
 course_list = {int(101):("Mathematics I", "Monday 8:30 - 11:30", 8),
