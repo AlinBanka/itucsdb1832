@@ -1,12 +1,15 @@
 from flask import Flask, render_template, url_for, flash, request, session, redirect, Markup, g
-from form import RegistrationForm, LoginForm, Course, Database, teacher_course, teacher_db
+from form import RegistrationForm, LoginForm, Course, Database, teacher_course, teacher_db, message, messages
 from dbinit import initialize
 import psycopg2 as db
+import os
 
 app = Flask(__name__)
 app.config['SECRET_KEY'] = '1234w7ecF4gh321q'
 
-url = "postgres://ffpzkcsbsmkffc:0bf6c8ea8127f14cb4da7d50542d9dadffa30fd97640dc6260cdac27f9762656@ec2-79-125-8-105.eu-west-1.compute.amazonaws.com:5432/d4280d6o5jiga1"
+APP_ROOT = os.path.dirname(os.path.abspath('_file_'))
+
+url = "postgres://postgres@localhost:5432/postgres"
 initialize(url)
 
 course_list = {int(101):("Mathematics I", "Monday 8:30 - 11:30", 8),
@@ -63,6 +66,10 @@ def home_page():
                 for (code, ) in result:
                     user = code
                 cursor.close()
+                session.pop('tuser', None)
+                if user!=None:
+                    session['tuser'] = (login.username)
+                    return redirect(url_for('teacher_profile', mid=user))
                 return redirect(url_for('teacher_profile', mid=user))
             except db.DatabaseError:
                 connection.rollback()
@@ -148,12 +155,22 @@ def profile(mid):
         courses = dtb.get_courses()
         statement = """SELECT crn FROM courses WHERE studentno = {}""".format(mid)
         cursor.execute(statement)
-        result = cursor.fetchall
+        result = cursor.fetchall()
         check = True
         if not result:
             check = False
         #output = Markup(output)
-        return render_template("profile.html", name=sname, st=mid, gpa=ngpa, grade=ngrade, courses=courses, check=check)
+        statement = """SELECT image FROM student WHERE st_id = {}""".format(mid)
+        cursor.execute(statement)
+        result = cursor.fetchall()
+        for (image, ) in result:
+            d = image
+        if d:
+            imagename = str(mid) + ".jpg"
+        else:
+            imagename = "default.png"
+            print(imagename)
+        return render_template("profile.html", name=sname, st=mid, gpa=ngpa, grade=ngrade, courses=courses, check=check, imagename=imagename)
 
 @app.route("/update/<no>/<t>", methods=['GET', 'POST'])
 def update(no, t):
@@ -214,11 +231,21 @@ def teacher_profile(mid):
         courses = dtb.get_courses()
         statement = """SELECT crn FROM available WHERE teacherno = {}""".format(mid)
         cursor.execute(statement)
-        result = cursor.fetchall
+        result = cursor.fetchall()
         check = True
         if not result:
             check = False
-        return render_template("teacher_profile.html", name=sname, scode=mid, courses=courses, check=check)
+        statement = """SELECT image FROM teachers WHERE code = {}""".format(mid)
+        cursor.execute(statement)
+        result = cursor.fetchall()
+        for (image, ) in result:
+            d = image
+        if d:
+            imagename = str(mid) + ".jpg"
+        else:
+            imagename = "default.png"
+            print(imagename)
+        return render_template("teacher_profile.html", name=sname, scode=mid, courses=courses, check=check, imagename=imagename)
 
 
 @app.route("/teacher_update/<code>", methods=['GET', 'POST'])
@@ -529,10 +556,88 @@ def drop_course(crn, studentno):
         connection.close()
     return redirect(url_for('profile', mid=studentno))
 
+@app.route("/upload/<studentno>", methods=['POST'])
+def upload(studentno):
+    target = os.path.join(APP_ROOT, 'static/')
+    print(target)
+    if not os.path.isdir(target):
+        os.mkdir(target)
+    b = studentno
+    file = request.files["myFile"]
+    filename = b + ".jpg"
+    print(b)
+    destination = "/".join([target, filename])
+    file.save(destination)
+    connection = db.connect(url)
+    cursor = connection.cursor()
+    statement = """UPDATE student SET image = True WHERE st_id = {};""".format(b)
+    cursor.execute(statement)
+    connection.commit()
+    print(statement)
+    return redirect(url_for('profile', mid=b))
+
+@app.route("/tupload/<studentno>", methods=['POST'])
+def tupload(studentno):
+    target = os.path.join(APP_ROOT, 'static/')
+    print(target)
+    if not os.path.isdir(target):
+        os.mkdir(target)
+    b = studentno
+    file = request.files["myFile"]
+    filename = b + ".jpg"
+    print(b)
+    destination = "/".join([target, filename])
+    file.save(destination)
+    connection = db.connect(url)
+    cursor = connection.cursor()
+    statement = """UPDATE teachers SET image = True WHERE code = {};""".format(b)
+    cursor.execute(statement)
+    connection.commit()
+    print(statement)
+    return redirect(url_for('teacher_profile', mid=b))
+
 @app.route("/drop_session")
 def drop_session():
     session.pop('user', None)
     return redirect(url_for('home'))
+
+@app.route("/drop_tsession")
+def drop_tsession():
+    session.pop('tuser', None)
+    return redirect(url_for('home'))
+
+@app.route("/message_board/<crn>/<studentno>/<t>", methods=['GET', 'POST'])
+def message_board(crn, studentno, t):
+    connection = db.connect(url)
+    cursor = connection.cursor()
+    statement = """SELECT crn, name, message FROM MESSAGES WHERE crn = {};""".format(crn)
+    msgs = messages()
+    cursor.execute(statement)
+    result = cursor.fetchall()
+    for crn, name, message1 in result:
+        msgs.add_message(message(crn, name, message1))
+    output = msgs.get_messages()
+    statement = """SELECT name FROM courses WHERE crn = {};""".format(crn)
+    cursor.execute(statement)
+    result = cursor.fetchall()
+    for (name, ) in result:
+        f=name
+    if request.method=="POST":
+        msg=request.form["msg"]
+        if t=='s':
+            statement = """SELECT name FROM student WHERE st_id = {};""".format(studentno)
+        if t=='t':
+            statement = """SELECT name FROM teachers WHERE code = {};""".format(studentno)
+        cursor.execute(statement)
+        result = cursor.fetchall()
+        for (name, ) in result:
+            sname = name
+        statement = """INSERT INTO MESSAGES(crn, name, message) VALUES({}, \'{}\', \'{}\');""".format(crn, sname, msg)
+        cursor.execute(statement)
+        connection.commit()
+        return redirect(url_for('message_board', crn=crn, studentno=studentno, t=t))
+    return render_template("message_panel.html", cname=f, messages=output)
+        
 
 if __name__ == "__main__":
     app.run(debug=True)
