@@ -14,6 +14,7 @@ INIT_STATEMENTS = [
 	gpa INTEGER DEFAULT 0,
 	credit INTEGER DEFAULT 0,
 	grade INTEGER,
+	image BOOL DEFAULT FALSE,
 	CHECK (credit <= 27)
         )""",
     """CREATE TABLE IF NOT EXISTS TEACHERS(
@@ -23,6 +24,7 @@ INIT_STATEMENTS = [
         name VARCHAR NOT NULL,
         surname VARCHAR NOT NULL,
         credit INTEGER DEFAULT 0,
+        image BOOL DEFAULT FALSE,
         CHECK(credit <= 27)
         )""",
     """CREATE TABLE IF NOT EXISTS COURSES(
@@ -58,6 +60,11 @@ INIT_STATEMENTS = [
         available BOOL,
         timeslot VARCHAR,
         PRIMARY KEY(crn)
+        )""",
+    """CREATE TABLE IF NOT EXISTS MESSAGES(
+        crn INTEGER,
+        name VARCHAR,
+        message text
         )"""
 ]
 
@@ -72,5 +79,5 @@ def initialize(url):
 
 
 if __name__ == "__main__":
-    url = """postgres://ffpzkcsbsmkffc:0bf6c8ea8127f14cb4da7d50542d9dadffa30fd97640dc6260cdac27f9762656@ec2-79-125-8-105.eu-west-1.compute.amazonaws.com:5432/d4280d6o5jiga1"""
+    url = "postgres://ffpzkcsbsmkffc:0bf6c8ea8127f14cb4da7d50542d9dadffa30fd97640dc6260cdac27f9762656@ec2-79-125-8-105.eu-west-1.compute.amazonaws.com:5432/d4280d6o5jiga1"
     initialize(url)
