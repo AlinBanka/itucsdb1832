@@ -1,0 +1,27 @@
+{% extends "layout.html" %}
+{% block title %}Create{% endblock %}
+{% block content %}
+    <div class="form" style="margin-left:37%;padding-left:40px;padding-top:30px;padding-bottom:30px;">
+        <form name="myForm", style="border:white;" method="POST" action="" onsubmit="return validateForm()">
+		<fieldset style="border:0px;">      		  
+		<input name="username" type="text" placeholder="username" required>
+		<input name="password" type="password" placeholder="password" required>
+		<input name="confirm" type="password" placeholder="confirm" required>
+		<input name="name" type="text" placeholder="name" required>
+		<input name="surname" type="text" placeholder="surname" required>
+		<input name="studentno" type="text" placeholder="studentno" required>
+		<input name="grade" type="text" placeholder="Grade"/>
+		<div style="margin-bottom:10px;">
+		  <p class="message" style="display:inline;">I am a:   
+			  <select name="opt" style="width:150px;">
+			  <option value="student">Student</option>
+			  <option value="teacher">Teacher</option>
+			  </select>
+		  </p>
+	  </div>
+		<button>CREATE</button>
+		</fieldset>
+      		  <p class="message" style="margin-top:-2px;">Already have an account? <a href="{{ url_for('home_page') }}">Login</a></p>
+        </form>
+    </div>
+{% endblock %}

@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html>
+<head>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<style>
+/* The container */
+.container {
+  display: block;
+  position: relative;
+  padding-left: 35px;
+  margin-bottom: 12px;
+  cursor: pointer;
+  font-size: 16px;
+  font-family: Arial;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+/* Hide the browser's default radio button */
+.container input {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+}
+
+/* Create a custom radio button */
+.checkmark {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 15px;
+  width: 15px;
+  background-color: #eee;
+  border-radius: 50%;
+}
+
+/* On mouse-over, add a grey background color */
+.container:hover input ~ .checkmark {
+  background-color: #ccc;
+}
+
+/* When the radio button is checked, add a blue background */
+.container input:checked ~ .checkmark {
+  background-color: #2196F3;
+}
+
+/* Create the indicator (the dot/circle - hidden when not checked) */
+.checkmark:after {
+  content: "";
+  position: absolute;
+  display: none;
+}
+
+/* Show the indicator (dot/circle) when checked */
+.container input:checked ~ .checkmark:after {
+  display: block;
+}
+
+/* Style the indicator (dot/circle) */
+.container .checkmark:after {
+ 	top: 5px;
+	left: 5px;
+	width: 5px;
+	height: 5px;
+	border-radius: 50%;
+	background: white;
+}
+	body{
+    	    background: -webkit-linear-gradient(left, #3931af, #00c6ff);
+	}
+	.li1 {
+	    float: left;
+	}
+
+	.li-a {
+	    display: block;
+	    color: white;
+	    text-align: center;
+	    padding: 14px 16px;
+	    text-decoration: none;
+	}
+
+	.li-a:hover:not(.active) {
+	    background-color: #111;
+	}
+</style>
+</head>
+
+<body>
+<ul style="font-family:sans-serif;list-style-type:none;margin:0;padding:0;overflow:hidden;background-color:#00264d;font-size:16px;">
+  <li class="li1"><a class="li-a" href="{{url_for('teacher_profile', mid=scode)}}">Home</a></li>
+  <li class="li1"><a class="li-a" href="#contact">Contact</a></li>
+  <li class="li1"><a class="li-a" href="#about">About</a></li>
+</ul>
+<div style="width: 25%; border: 20px solid white; margin-top: 5%;margin-left:40%;background-color:white;box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);border-radius: 15px;">
+<p style="font-family: sans-serif;color:#000080;"><b>Select your course:</b></p>
+<form method="POST" action="">
+<div style="height: 250px; overflow-y: scroll; padding:10px;background-color: #FDF5E6;box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.1), 0 2px 5px 0 rgba(0, 0, 0, 0.05);border-radius: 5px;">
+{% for crn, name in courses.items() %}
+  <label class="container">{{name}}
+	  <input type="radio" checked="checked" name="course" value="{{crn}}">
+	  <span class="checkmark"></span>
+  </label>
+{% endfor %}
+  <label class="container">None
+  <input type="radio" checked="checked" name="course" value="none">
+  <span class="checkmark"></span>
+</label>
+</div>
+  <button style="margin-left:30%;margin-top:10px;font-family: sans-serif; height: 40px; width:100px; border-radius: 10px;outline: 0;color: #FFFFFF;background:  #1a53ff;">Submit</button>
+</form>
+<div>
+
+
+</body>
+</html>
