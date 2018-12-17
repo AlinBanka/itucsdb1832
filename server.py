@@ -156,9 +156,9 @@ def profile(mid):
         statement = """SELECT crn FROM courses WHERE studentno = {}""".format(mid)
         cursor.execute(statement)
         result = cursor.fetchall()
-        check = True
+        check = False
         if not result:
-            check = False
+            check = True
         #output = Markup(output)
         statement = """SELECT image FROM student WHERE st_id = {}""".format(mid)
         cursor.execute(statement)
@@ -232,9 +232,9 @@ def teacher_profile(mid):
         statement = """SELECT crn FROM available WHERE teacherno = {}""".format(mid)
         cursor.execute(statement)
         result = cursor.fetchall()
-        check = True
+        check = False
         if not result:
-            check = False
+            check = True
         statement = """SELECT image FROM teachers WHERE code = {}""".format(mid)
         cursor.execute(statement)
         result = cursor.fetchall()
