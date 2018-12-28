@@ -21,12 +21,12 @@
 
 project = 'ITUCSDB1832'
 copyright = '2018, ITUCSDB1832'
-author = 'Alin Banka'
+author = 'ITUCSDB1832'
 
 # The short X.Y version
-version = ''
+version = '1.0'
 # The full version, including alpha/beta/rc tags
-release = ''
+release = 'rc'
 
 
 # -- General configuration ---------------------------------------------------
@@ -40,7 +40,7 @@ release = ''
 # ones.
 extensions = [
     'sphinx.ext.githubpages',
-]
+    ]
 
 # Add any paths that contain templates here, relative to this directory.
 templates_path = ['_templates']
@@ -75,7 +75,7 @@ pygments_style = None
 # The theme to use for HTML and HTML Help pages.  See the documentation for
 # a list of builtin themes.
 #
-html_theme = 'sphinx_rtd_theme'
+html_theme = 'alabaster'
 
 # Theme options are theme-specific and customize the look and feel of a theme
 # further.  For a list of options available for each theme, see the
@@ -102,7 +102,7 @@ html_static_path = ['_static']
 # -- Options for HTMLHelp output ---------------------------------------------
 
 # Output file base name for HTML help builder.
-htmlhelp_basename = 'ITUCSDB1832doc'
+htmlhelp_basename = 'ITUCSDB18NNdoc'
 
 
 # -- Options for LaTeX output ------------------------------------------------
@@ -175,3 +175,5 @@ epub_exclude_files = ['search.html']
 
 
 # -- Extension configuration -------------------------------------------------
+
+#pdf_documents = [('index', u'Project', u'Project', u'Alin Banka'),]
