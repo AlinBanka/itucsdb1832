@@ -12,21 +12,21 @@
 # add these directories to sys.path here. If the directory is relative to the
 # documentation root, use os.path.abspath to make it absolute, like shown here.
 #
-import os
-import sys
-sys.path.insert(0, os.path.abspath('.'))
-!pip install --yes sphinx_rtd_theme
+# import os
+# import sys
+# sys.path.insert(0, os.path.abspath('.'))
+
 
 # -- Project information -----------------------------------------------------
 
 project = 'ITUCSDB1832'
 copyright = '2018, ITUCSDB1832'
-author = 'ITUCSDB1832'
+author = 'Alin Banka'
 
 # The short X.Y version
-version = '1.0'
+version = ''
 # The full version, including alpha/beta/rc tags
-release = 'rc'
+release = ''
 
 
 # -- General configuration ---------------------------------------------------
@@ -40,7 +40,7 @@ release = 'rc'
 # ones.
 extensions = [
     'sphinx.ext.githubpages',
-    ]
+]
 
 # Add any paths that contain templates here, relative to this directory.
 templates_path = ['_templates']
@@ -102,7 +102,7 @@ html_static_path = ['_static']
 # -- Options for HTMLHelp output ---------------------------------------------
 
 # Output file base name for HTML help builder.
-htmlhelp_basename = 'ITUCSDB18NNdoc'
+htmlhelp_basename = 'ITUCSDB1832doc'
 
 
 # -- Options for LaTeX output ------------------------------------------------
@@ -175,5 +175,3 @@ epub_exclude_files = ['search.html']
 
 
 # -- Extension configuration -------------------------------------------------
-
-#pdf_documents = [('index', u'Project', u'Project', u'Alin Banka'),]
