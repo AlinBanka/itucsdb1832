@@ -1,0 +1,312 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Parts Implemented by Alin Banka &mdash; ITUCSDB1832 rc documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Developer Guide" href="../developer/index.html" />
+    <link rel="prev" title="User Guide" href="index.html" /> 
+
+  
+  <script src="../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> ITUCSDB1832
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                1.0
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">User Guide</a><ul class="current">
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Parts Implemented by Alin Banka</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#login">Login</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#register">Register</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#student">Student</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#teacher">Teacher</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../developer/index.html">Developer Guide</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">ITUCSDB1832</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="index.html">User Guide</a> &raquo;</li>
+        
+      <li>Parts Implemented by Alin Banka</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/user/member1.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="parts-implemented-by-alin-banka">
+<h1>Parts Implemented by Alin Banka<a class="headerlink" href="#parts-implemented-by-alin-banka" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="login">
+<h2>Login<a class="headerlink" href="#login" title="Permalink to this headline">¶</a></h2>
+<p>In this part the user can just enter his primary credentials, which are the username and the password. In the selection box, the user should select ‘Student’ or ‘Teacher’
+according to his/her/their account type. Afterwards, he/she/they should click login. If the credentials are correct, the user will be redirected to his or her profile.
+Otherwise, the user will be once again directed to the login page where he/she/they can reenter the credentials. If the user does not possess an account, but they
+have been provided with a code from the school, which allows them to create an account, they can click ‘Create an Account’ to register.</p>
+<div class="figure" id="id1">
+<a class="reference internal image-reference" href="../_images/main.png"><img alt="Landing page" src="../_images/main.png" style="width: 665.0px; height: 276.5px;" /></a>
+<p class="caption"><span class="caption-text">Home Page of the app</span></p>
+</div>
+</div>
+<div class="section" id="register">
+<h2>Register<a class="headerlink" href="#register" title="Permalink to this headline">¶</a></h2>
+<p>If the user does not possess an account, but is authorized to have one by the obtainment of a unique code provided by the school, they should create the account right away.
+In the register page a form is displayed from which the user can enter his/her/their credentials to start an account. Notice that is the user enters a password less than six characters,
+he/she/they will be shown a validation message that does not allow them to create an account until he/she/they enter a password of the correct length.
+Similarly, the user will not be allowed to create an account if they enter a username that has been chosen by another user before them. Also, they will not be allowed to
+create an account if the password and the password confirmation do not match. They can select from the selection box if they are a ‘Student’ or a ‘Teacher’. Notice that teachers do not have to fill
+the ‘Grade’ text box. After completion of all text boxes they can click Create and proceed with their login.</p>
+<div class="figure" id="id2">
+<a class="reference internal image-reference" href="../_images/register.png"><img alt="Register page" src="../_images/register.png" style="width: 663.0px; height: 290.0px;" /></a>
+<p class="caption"><span class="caption-text">Register Page of the app</span></p>
+</div>
+</div>
+<div class="section" id="student">
+<h2>Student<a class="headerlink" href="#student" title="Permalink to this headline">¶</a></h2>
+<p>Notice that this section is only valid for the user of type ‘Student’. This is the place where the main interaction happens.
+You can upload a picture, update your credentials, look at your attendance and your grades, check tuition, add a course or participate in a message thread for a course
+Notice that you can only delete your account as long as you have not enrolled in any course. Once you enroll the delete account option will be removed. That is because it does not make sense to unregister once your have participated courses and it breaks referential integrity.</p>
+<p>As we can see, the delete function is allowed in this page because the student has not added any courses.</p>
+<div class="figure" id="id3">
+<a class="reference internal image-reference" href="../_images/profile_with_delete.png"><img alt="Profile page" src="../_images/profile_with_delete.png" style="width: 938.6999999999999px; height: 348.59999999999997px;" /></a>
+<p class="caption"><span class="caption-text">Profile Page of the app</span></p>
+</div>
+<p>But deletion is not allowed here. As we can see in the table, the student can view his/her/their cummulative grade, attendance, last grade with the weight and the name, and access the message panel of that course.</p>
+<div class="figure" id="id4">
+<a class="reference internal image-reference" href="../_images/profile.png"><img alt="Profile page" src="../_images/profile.png" style="width: 658.5px; height: 269.5px;" /></a>
+<p class="caption"><span class="caption-text">Profile Page of the app</span></p>
+</div>
+<p>The student can click on the Add button to add courses. A list of enabled courses will appear, but the student will not be shown courses that conflict with his time slot or the year he is in.</p>
+<div class="figure" id="id5">
+<a class="reference internal image-reference" href="../_images/courses.png"><img alt="Courses page" src="../_images/courses.png" style="width: 531.0px; height: 452.0px;" /></a>
+<p class="caption"><span class="caption-text">Courses Page of the app</span></p>
+</div>
+<p>As for the message panel, the user can just click the MSG link and he/she/they will be directed.</p>
+<div class="figure" id="id6">
+<a class="reference internal image-reference" href="../_images/msg.png"><img alt="Messages page" src="../_images/msg.png" style="width: 683.1999999999999px; height: 375.2px;" /></a>
+<p class="caption"><span class="caption-text">Message Page of the app</span></p>
+</div>
+<p>The student can drop a course if he/she/they has not received any grade yet. Once the student receives a grade, the drop button will disappear.</p>
+<div class="figure" id="id7">
+<a class="reference internal image-reference" href="../_images/course_drop.png"><img alt="Profile page" src="../_images/course_drop.png" style="width: 808.5px; height: 362.59999999999997px;" /></a>
+<p class="caption"><span class="caption-text">Profile Page of the app with one course drop enabled</span></p>
+</div>
+<p>For the finance part, the student can click in the tuition button and he/she/they will be redirected to the web page where the data will be added.</p>
+<div class="figure" id="id8">
+<a class="reference internal image-reference" href="../_images/finance.png"><img alt="Finance page" src="../_images/finance.png" style="width: 907.9px; height: 207.89999999999998px;" /></a>
+<p class="caption"><span class="caption-text">Finance Page of the App</span></p>
+</div>
+<p>To update, just click on the Update link and add the credentials correctly.</p>
+<div class="figure" id="id9">
+<a class="reference internal image-reference" href="../_images/update.png"><img alt="Update page" src="../_images/update.png" style="width: 302.4px; height: 354.9px;" /></a>
+<p class="caption"><span class="caption-text">Update Page of the App</span></p>
+</div>
+</div>
+<div class="section" id="teacher">
+<h2>Teacher<a class="headerlink" href="#teacher" title="Permalink to this headline">¶</a></h2>
+<p>The update and delete operations, as well as the message panel, in this mode work exactly the same way as in the student section, so you are advised to take a look there for more information.
+In addition to the mutual operations with the student section, the teachers can perform other operations.</p>
+<div class="figure" id="id10">
+<a class="reference internal image-reference" href="../_images/tprofile.png"><img alt="Profile page" src="../_images/tprofile.png" style="width: 932.4px; height: 413.0px;" /></a>
+<p class="caption"><span class="caption-text">Teacher Profile Page of the App</span></p>
+</div>
+<p>For enabling a course the teachers can select the ‘Teach Course’ link and be given a list of the courses they can enable for the student to add. Once they enable it
+and the student selects it, the course will show up in the table in the profile.</p>
+<p>In this table the teacher can a grade for a given task.</p>
+<div class="figure" id="id11">
+<a class="reference internal image-reference" href="../_images/grade.png"><img alt="Grade page" src="../_images/grade.png" style="width: 416.5px; height: 337.4px;" /></a>
+<p class="caption"><span class="caption-text">Grade Page of the App</span></p>
+</div>
+<p>Or they can add attendance for a particular lecture.</p>
+<div class="figure" id="id12">
+<a class="reference internal image-reference" href="../_images/attendance.png"><img alt="Attendance page" src="../_images/attendance.png" style="width: 371.7px; height: 306.59999999999997px;" /></a>
+<p class="caption"><span class="caption-text">Attendance Page of the App</span></p>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../developer/index.html" class="btn btn-neutral float-right" title="Developer Guide" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="index.html" class="btn btn-neutral" title="User Guide" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2018, ITUCSDB1832
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../_static/jquery.js"></script>
+        <script type="text/javascript" src="../_static/underscore.js"></script>
+        <script type="text/javascript" src="../_static/doctools.js"></script>
+        <script type="text/javascript" src="../_static/language_data.js"></script>
+    
+
+  
+
+  <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

@@ -1,0 +1,368 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Developer Guide &mdash; ITUCSDB1832 rc documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Parts Implemented by Alin Banka" href="member1.html" />
+    <link rel="prev" title="Parts Implemented by Alin Banka" href="../user/member1.html" /> 
+
+  
+  <script src="../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> ITUCSDB1832
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                1.0
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../user/index.html">User Guide</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Developer Guide</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#database-design">Database Design</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#code">Code</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="member1.html">Parts Implemented by Alin Banka</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">ITUCSDB1832</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+      <li>Developer Guide</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/developer/index.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="developer-guide">
+<h1>Developer Guide<a class="headerlink" href="#developer-guide" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="database-design">
+<h2>Database Design<a class="headerlink" href="#database-design" title="Permalink to this headline">¶</a></h2>
+<p>This project utilizes SQL to build the database system, and Flask to build the web application. In addition, it uses css/bootstrap and javascript for the UI.</p>
+<p><strong>Database Design of the project</strong></p>
+<p>The project consists of 6 tables. Three of them are main tables and the three others are auxiliary.</p>
+<p><strong>Main Tables:</strong></p>
+<div class="line-block">
+<div class="line">Student</div>
+<div class="line">Teacher</div>
+<div class="line">Courses</div>
+</div>
+<p><strong>Auxiliary Tables:</strong></p>
+<div class="line-block">
+<div class="line">Finance</div>
+<div class="line">Messages</div>
+<div class="line">Available</div>
+</div>
+<p><strong>The main E/R diagram</strong></p>
+<div class="figure" id="id1">
+<a class="reference internal image-reference" href="../_images/er.png"><img alt="Diagram" src="../_images/er.png" style="width: 747.0px; height: 105.0px;" /></a>
+<p class="caption"><span class="caption-text">Main relationship</span></p>
+</div>
+<p><strong>The full relationships between all tables</strong></p>
+<div class="figure" id="id2">
+<a class="reference internal image-reference" href="../_images/database.png"><img alt="Full relationship" src="../_images/database.png" style="width: 861.0px; height: 510.0px;" /></a>
+<p class="caption"><span class="caption-text">Full relationship</span></p>
+</div>
+</div>
+<div class="section" id="code">
+<h2>Code<a class="headerlink" href="#code" title="Permalink to this headline">¶</a></h2>
+<p><strong>Structure of code</strong></p>
+<div class="line-block">
+<div class="line">So basically there is a file called server.py. In that file all the backend functions are located. There you can find the code that renders the html templates, handles the database operations and deals with the session etc. There is another file called form.py where helper classes for the server file are located. Whereas in the dbinit.py file, you can find all the tables’ creation code and the initialization code provided below.</div>
+</div>
+<p><strong>Initialization</strong></p>
+<div class="line-block">
+<div class="line">The code for the initialization of the database is provided below</div>
+</div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">initialize</span><span class="p">(</span><span class="n">url</span><span class="p">):</span>
+ <span class="k">with</span> <span class="n">dbapi2</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="n">url</span><span class="p">)</span> <span class="k">as</span> <span class="n">connection</span><span class="p">:</span>
+     <span class="n">cursor</span> <span class="o">=</span> <span class="n">connection</span><span class="o">.</span><span class="n">cursor</span><span class="p">()</span>
+     <span class="k">for</span> <span class="n">statement</span> <span class="ow">in</span> <span class="n">INIT_STATEMENTS</span><span class="p">:</span>
+         <span class="k">print</span><span class="p">(</span><span class="n">statement</span><span class="p">)</span>
+         <span class="n">cursor</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="n">statement</span><span class="p">)</span>
+     <span class="n">cursor</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span><span class="p">:</span>
+             <span class="n">url</span> <span class="o">=</span> <span class="s2">&quot;postgres://ffpzkcsbsmkffc:0bf6c8ea8127f14cb4da7d50542d9dadffa30fd97640dc6260cdac27f9762656@ec2-79-125-8-105.eu-west-1.compute.amazonaws.com:5432/d4280d6o5jiga1&quot;</span>
+             <span class="n">initialize</span><span class="p">(</span><span class="n">url</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><strong>Python Framework</strong></p>
+<div class="line-block">
+<div class="line">Flask is used as the main framework for the development of this project. The following python libraries and functions are used heavily</div>
+</div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">flask</span> <span class="kn">import</span> <span class="n">Flask</span><span class="p">,</span> <span class="n">render_template</span><span class="p">,</span> <span class="n">url_for</span><span class="p">,</span> <span class="n">flash</span><span class="p">,</span> <span class="n">request</span><span class="p">,</span> <span class="n">session</span><span class="p">,</span> <span class="n">redirect</span><span class="p">,</span> <span class="n">Markup</span><span class="p">,</span> <span class="n">g</span>
+<span class="kn">from</span> <span class="nn">dbinit</span> <span class="kn">import</span> <span class="n">initialize</span>
+<span class="kn">import</span> <span class="nn">psycopg2</span> <span class="kn">as</span> <span class="nn">db</span>
+<span class="kn">import</span> <span class="nn">os</span>
+</pre></div>
+</div>
+<div class="line-block">
+<div class="line">Flask templates are sometimes used to render the webpages. An example is shown below.</div>
+</div>
+<div class="highlight-html notranslate"><div class="highlight"><pre><span></span>    {% extends &quot;layout.html&quot; %}
+    {% block title %}Create{% endblock %}
+    {% block content %}
+&lt;div class=&quot;form&quot; style=&quot;margin-left:37%;padding-left:40px;padding-top:30px;padding-bottom:30px;&quot;&gt;
+    &lt;form name=&quot;myForm&quot;, style=&quot;border:white;&quot; method=&quot;POST&quot; action=&quot;&quot; onsubmit=&quot;return validateForm()&quot;&gt;
+            &lt;fieldset style=&quot;border:0px;&quot;&gt;
+            &lt;input name=&quot;username&quot; type=&quot;text&quot; placeholder=&quot;username&quot; required&gt;
+            &lt;input name=&quot;password&quot; type=&quot;password&quot; placeholder=&quot;password&quot; required&gt;
+            &lt;input name=&quot;confirm&quot; type=&quot;password&quot; placeholder=&quot;confirm&quot; required&gt;
+            &lt;input name=&quot;name&quot; type=&quot;text&quot; placeholder=&quot;name&quot; required&gt;
+            &lt;input name=&quot;surname&quot; type=&quot;text&quot; placeholder=&quot;surname&quot; required&gt;
+            &lt;input name=&quot;studentno&quot; type=&quot;text&quot; placeholder=&quot;studentno&quot; required&gt;
+            &lt;input name=&quot;grade&quot; type=&quot;text&quot; placeholder=&quot;Grade&quot;/&gt;
+            &lt;div style=&quot;margin-bottom:10px;&quot;&gt;
+              &lt;p class=&quot;message&quot; style=&quot;display:inline;&quot;&gt;I am a:
+                      &lt;select name=&quot;opt&quot; style=&quot;width:150px;&quot;&gt;
+                      &lt;option value=&quot;student&quot;&gt;Student&lt;/option&gt;
+                      &lt;option value=&quot;teacher&quot;&gt;Teacher&lt;/option&gt;
+                      &lt;/select&gt;
+              &lt;/p&gt;
+      &lt;/div&gt;
+            &lt;button&gt;CREATE&lt;/button&gt;
+            &lt;/fieldset&gt;
+              &lt;p class=&quot;message&quot; style=&quot;margin-top:-2px;&quot;&gt;Already have an account? &lt;a href=&quot;{{ url_for(&#39;home_page&#39;) }}&quot;&gt;Login&lt;/a&gt;&lt;/p&gt;
+    &lt;/form&gt;
+&lt;/div&gt;
+    {% endblock %}
+</pre></div>
+</div>
+<div class="line-block">
+<div class="line">Although Javascript is rarely used an example of its usage as a validator is written below</div>
+</div>
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="kd">function</span> <span class="nx">validateForm</span><span class="p">()</span> <span class="p">{</span>
+  <span class="kd">var</span> <span class="nx">x</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">forms</span><span class="p">[</span><span class="s2">&quot;myForm&quot;</span><span class="p">][</span><span class="s2">&quot;password&quot;</span><span class="p">].</span><span class="nx">value</span><span class="p">;</span>
+  <span class="kd">var</span> <span class="nx">y</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">forms</span><span class="p">[</span><span class="s2">&quot;myForm&quot;</span><span class="p">][</span><span class="s2">&quot;confirm&quot;</span><span class="p">].</span><span class="nx">value</span><span class="p">;</span>
+  <span class="k">if</span> <span class="p">(</span><span class="nx">x</span> <span class="o">!=</span> <span class="nx">y</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nx">alert</span><span class="p">(</span><span class="s2">&quot;Password and confirmation do not match!&quot;</span><span class="p">);</span>
+        <span class="k">return</span> <span class="kc">false</span><span class="p">;</span>
+  <span class="p">}</span>
+  <span class="k">if</span><span class="p">(</span><span class="nx">x</span><span class="p">.</span><span class="nx">length</span> <span class="o">&lt;=</span> <span class="mi">6</span><span class="p">){</span>
+        <span class="nx">alert</span><span class="p">(</span><span class="s2">&quot;Password length is too short!&quot;</span><span class="p">);</span>
+        <span class="k">return</span> <span class="kc">false</span><span class="p">;</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<div class="line-block">
+<div class="line">CSS is also used. You can find a css file in the static folder in which the classes are written, but also inline and header style are used.</div>
+</div>
+<div class="line-block">
+<div class="line">Other operations are done like uploading a file etc. For more information check the source code.</div>
+</div>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="member1.html">Parts Implemented by Alin Banka</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="member1.html#student">Student</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="member1.html#creation">1.CREATION</a></li>
+<li class="toctree-l3"><a class="reference internal" href="member1.html#reading">2.READING</a></li>
+<li class="toctree-l3"><a class="reference internal" href="member1.html#updating">3.UPDATING</a></li>
+<li class="toctree-l3"><a class="reference internal" href="member1.html#deletion">4.DELETION</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="member1.html#teachers">Teachers</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="member1.html#id1">1.CREATION</a></li>
+<li class="toctree-l3"><a class="reference internal" href="member1.html#id2">2.READING</a></li>
+<li class="toctree-l3"><a class="reference internal" href="member1.html#id3">3.UPDATING</a></li>
+<li class="toctree-l3"><a class="reference internal" href="member1.html#id4">4.DELETION</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="member1.html#courses">Courses</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="member1.html#id5">1.CREATION</a></li>
+<li class="toctree-l3"><a class="reference internal" href="member1.html#id6">2.READING</a></li>
+<li class="toctree-l3"><a class="reference internal" href="member1.html#id7">3.UPDATING</a></li>
+<li class="toctree-l3"><a class="reference internal" href="member1.html#id8">4.DELETION</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="member1.html#auxiliary-tables">Auxiliary Tables</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="member1.html" class="btn btn-neutral float-right" title="Parts Implemented by Alin Banka" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="../user/member1.html" class="btn btn-neutral" title="Parts Implemented by Alin Banka" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2018, ITUCSDB1832
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../_static/jquery.js"></script>
+        <script type="text/javascript" src="../_static/underscore.js"></script>
+        <script type="text/javascript" src="../_static/doctools.js"></script>
+        <script type="text/javascript" src="../_static/language_data.js"></script>
+    
+
+  
+
+  <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
