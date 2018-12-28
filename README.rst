@@ -3,6 +3,9 @@ of the Istanbul Technical University Computer Engineering Department.
 The project uses the Python language, the Flask web application framework,
 and the PostgreSQL database.
 
+To view the final website go to https://itucsdb1832.herokuapp.com/home_page
+To view the documentation go to https://itucsdb1832.github.io/itucsdb1832/
+
 How to use this repository
 --------------------------
 
