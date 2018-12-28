@@ -15,7 +15,7 @@
 import os
 import sys
 sys.path.insert(0, os.path.abspath('.'))
-!pip install --yes --prefix {sys.prefix} sphinx_rtd_theme
+!pip install --yes sphinx_rtd_theme
 
 # -- Project information -----------------------------------------------------
 
